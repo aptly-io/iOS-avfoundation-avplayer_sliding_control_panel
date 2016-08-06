@@ -1,11 +1,11 @@
 //  Copyright 2016 Francis Meyvis. All rights reserved.
 
-//  ViewController.h
+//  PlayerViewController.h
 //  slideInView
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
+@interface PlayerViewController : UIViewController
 
 
 @end

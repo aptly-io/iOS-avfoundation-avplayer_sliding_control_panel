@@ -3,11 +3,11 @@
 //  ViewController.m
 //  slideInView
 
-#import "ViewController.h"
+#import "PlayerViewController.h"
 
 @import AVFoundation;
 
-@interface ViewController ()
+@interface PlayerViewController ()
 
 @property (strong, nonatomic) IBOutlet UIView *playerView;
 @property (strong, nonatomic) IBOutlet UIButton *playPauseButton;
@@ -16,7 +16,7 @@
 
 static NSString *playerItemContext = @"playerItemContext";
 
-@implementation ViewController {
+@implementation PlayerViewController {
     
     AVPlayer *_player;
     AVPlayerLayer *_playerLayer;
