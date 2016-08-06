@@ -302,6 +302,7 @@
 				E7A402931D55B6E80087367A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
