@@ -2,6 +2,8 @@
 
 ## About
 
+![Screendump example](simulator_screendump.png)
+
 - Working device rotation (thanks to `layoutSubviews` in the `UIView` subclass, `PlayerView`)
 - Play/Pause, scrub back and forward
 - A seek bar (not using an animation; this is a POC for a media FW that gives no direct access to the `AVPlayer` and its `AVPlayerLayer`)
