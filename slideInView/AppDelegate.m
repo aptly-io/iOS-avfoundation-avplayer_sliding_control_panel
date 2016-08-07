@@ -1,8 +1,5 @@
 //  Copyright 2016 Francis Meyvis. All rights reserved.
 
-//  AppDelegate.m
-//  slideInView
-
 #import "AppDelegate.h"
 
 @interface AppDelegate ()

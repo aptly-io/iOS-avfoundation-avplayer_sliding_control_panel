@@ -1,10 +1,4 @@
-//
-//  main.m
-//  slideInView
-//
-//  Created by franchan on 06/08/16.
-//  Copyright © 2016 franchan. All rights reserved.
-//
+// Copyright 2016 Francis Meyvis. All rights reserved.
 
 #import <UIKit/UIKit.h>
 #import "AppDelegate.h"

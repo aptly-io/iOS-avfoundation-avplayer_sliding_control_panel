@@ -3,45 +3,170 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="FontAwesome.otf">
+            <string>FontAwesome</string>
+            <string>FontAwesome</string>
+            <string>FontAwesome</string>
+            <string>FontAwesome</string>
+            <string>FontAwesome</string>
+        </mutableArray>
+    </customFonts>
     <scenes>
         <!--Player View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="PlayerViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
-                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                        <viewControllerLayoutGuide type="top" id="cCU-Gj-0pJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="APN-7E-35V"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Vpe-od-vRr">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vpe-od-vRr" customClass="PlayerView">
                                 <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Coi-tw-Z5j">
-                                <rect key="frame" x="49" y="78" width="30" height="30"/>
-                                <state key="normal" title="Play"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wq3-y1-gS8">
+                                <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
                                 <connections>
-                                    <action selector="playPauseAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dTj-fT-l2H"/>
+                                    <action selector="toggleControlPanel:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ckf-W9-i55"/>
                                 </connections>
                             </button>
+                            <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D2G-Fc-S43" customClass="GradientView">
+                                <rect key="frame" x="0.0" y="-36" width="667" height="100"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Coi-tw-Z5j">
+                                        <rect key="frame" x="20" y="20" width="30" height="27"/>
+                                        <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="24"/>
+                                        <state key="normal" title="">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="playPauseAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dTj-fT-l2H"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jJ0-14-dIs" userLabel="Speaker Button">
+                                        <rect key="frame" x="70" y="20" width="30" height="27"/>
+                                        <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="24"/>
+                                        <state key="normal" title="">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="speakerAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="yBe-Ov-adh"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H3U-A7-rHT" userLabel="Mute Button">
+                                        <rect key="frame" x="70" y="20" width="30" height="27"/>
+                                        <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="24"/>
+                                        <state key="normal" title="">
+                                            <color key="titleColor" red="1" green="0.025465369833700402" blue="0.04423794169873918" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="muteAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5HN-av-nuq"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gFx-8K-lb3" userLabel="Skip back Button">
+                                        <rect key="frame" x="120" y="20" width="30" height="27"/>
+                                        <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="24"/>
+                                        <state key="normal" title="">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="skipbackAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="pdB-Ag-LR4"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gum-IH-bzo" userLabel="Skip forward Button">
+                                        <rect key="frame" x="170" y="20" width="30" height="27"/>
+                                        <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="24"/>
+                                        <state key="normal" title="">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="skipforwardAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="l5R-zw-ARU"/>
+                                        </connections>
+                                    </button>
+                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" continuous="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nOn-Fp-tN6">
+                                        <rect key="frame" x="218" y="20" width="427" height="31"/>
+                                        <color key="minimumTrackTintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="maximumTrackTintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="thumbTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <action selector="seekAction:" destination="BYZ-38-t0r" eventType="valueChanged" id="9eR-CI-5Ks"/>
+                                            <action selector="seekTouchDragInside:" destination="BYZ-38-t0r" eventType="touchDragInside" id="K1a-NJ-P9G"/>
+                                            <action selector="seekTouchUpOutside:" destination="BYZ-38-t0r" eventType="touchUpOutside" id="tGZ-O1-XQ9"/>
+                                        </connections>
+                                    </slider>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="gFx-8K-lb3" firstAttribute="leading" secondItem="jJ0-14-dIs" secondAttribute="trailing" constant="20" id="2iW-hn-aGN"/>
+                                    <constraint firstItem="H3U-A7-rHT" firstAttribute="top" secondItem="D2G-Fc-S43" secondAttribute="top" constant="20" id="9KV-58-rxn"/>
+                                    <constraint firstItem="Coi-tw-Z5j" firstAttribute="top" secondItem="D2G-Fc-S43" secondAttribute="top" constant="20" id="J3E-pD-Ve3"/>
+                                    <constraint firstItem="Coi-tw-Z5j" firstAttribute="leading" secondItem="D2G-Fc-S43" secondAttribute="leading" constant="20" id="KTZ-Bm-8ZY"/>
+                                    <constraint firstAttribute="trailing" secondItem="nOn-Fp-tN6" secondAttribute="trailing" constant="24" id="LDg-oA-mwk"/>
+                                    <constraint firstItem="gum-IH-bzo" firstAttribute="top" secondItem="D2G-Fc-S43" secondAttribute="top" constant="20" id="N2H-kD-YCE"/>
+                                    <constraint firstItem="nOn-Fp-tN6" firstAttribute="leading" secondItem="gum-IH-bzo" secondAttribute="trailing" constant="20" id="S1Z-mV-aRp"/>
+                                    <constraint firstItem="nOn-Fp-tN6" firstAttribute="top" secondItem="D2G-Fc-S43" secondAttribute="top" constant="20" id="Yw6-tx-96B"/>
+                                    <constraint firstAttribute="height" constant="100" id="cHB-6s-ALt"/>
+                                    <constraint firstItem="jJ0-14-dIs" firstAttribute="top" secondItem="D2G-Fc-S43" secondAttribute="top" constant="20" id="juB-oU-ZJU"/>
+                                    <constraint firstItem="jJ0-14-dIs" firstAttribute="leading" secondItem="Coi-tw-Z5j" secondAttribute="trailing" constant="20" id="lZu-cv-LbB"/>
+                                    <constraint firstItem="gum-IH-bzo" firstAttribute="leading" secondItem="gFx-8K-lb3" secondAttribute="trailing" constant="20" id="pUg-BY-Bb5"/>
+                                    <constraint firstItem="H3U-A7-rHT" firstAttribute="leading" secondItem="Coi-tw-Z5j" secondAttribute="trailing" constant="20" id="taI-PV-Pwb"/>
+                                    <constraint firstItem="gFx-8K-lb3" firstAttribute="top" secondItem="D2G-Fc-S43" secondAttribute="top" constant="20" id="zMl-AQ-9hZ"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="D2G-Fc-S43" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="0p5-Ej-flf"/>
+                            <constraint firstItem="Wq3-y1-gS8" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="BJh-3T-95h"/>
+                            <constraint firstItem="D2G-Fc-S43" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="BRz-N5-rdH"/>
+                            <constraint firstItem="Vpe-od-vRr" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" id="Ch7-2a-pnU"/>
+                            <constraint firstItem="Wq3-y1-gS8" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="DOJ-m6-DFh"/>
+                            <constraint firstItem="Wq3-y1-gS8" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="IUs-u4-sil"/>
+                            <constraint firstItem="APN-7E-35V" firstAttribute="top" secondItem="Vpe-od-vRr" secondAttribute="bottom" constant="66" id="S2Y-gO-HD1"/>
+                            <constraint firstItem="Vpe-od-vRr" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="34" id="UFZ-8Z-UYy"/>
+                            <constraint firstItem="D2G-Fc-S43" firstAttribute="top" secondItem="cCU-Gj-0pJ" secondAttribute="bottom" constant="-100" id="X9p-QP-NEN"/>
+                            <constraint firstItem="Vpe-od-vRr" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="b6O-7K-Bxd"/>
+                            <constraint firstItem="D2G-Fc-S43" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="ckC-Zw-qif"/>
+                            <constraint firstItem="Vpe-od-vRr" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="dQJ-Q5-h6s"/>
+                            <constraint firstItem="Vpe-od-vRr" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="o4A-Md-rgC"/>
+                            <constraint firstAttribute="trailing" secondItem="Vpe-od-vRr" secondAttribute="trailing" constant="200" id="qzy-QA-Fuu"/>
+                            <constraint firstItem="Wq3-y1-gS8" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" id="reG-IC-y5c"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="UFZ-8Z-UYy"/>
+                                <exclude reference="qzy-QA-Fuu"/>
+                                <exclude reference="0p5-Ej-flf"/>
+                                <exclude reference="S2Y-gO-HD1"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="V8U-M0-ofl"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
-                        <outlet property="playPauseButton" destination="Coi-tw-Z5j" id="s66-DJ-bws"/>
-                        <outlet property="playerView" destination="Vpe-od-vRr" id="HZX-1a-Nt3"/>
+                        <outlet property="_controlPanelTopConstraint" destination="X9p-QP-NEN" id="S8l-Xs-Yfa"/>
+                        <outlet property="_controlPanelView" destination="D2G-Fc-S43" id="taQ-1M-Fss"/>
+                        <outlet property="_muteButton" destination="H3U-A7-rHT" id="Spn-hl-wLt"/>
+                        <outlet property="_playPauseButton" destination="Coi-tw-Z5j" id="eRN-Q3-J3j"/>
+                        <outlet property="_playerView" destination="Vpe-od-vRr" id="k6F-2v-fDq"/>
+                        <outlet property="_skipBackButton" destination="gFx-8K-lb3" id="rWu-Vi-IR1"/>
+                        <outlet property="_skipForwardButton" destination="gum-IH-bzo" id="skN-Ay-Iin"/>
+                        <outlet property="_slider" destination="nOn-Fp-tN6" id="2Eg-A5-tS4"/>
+                        <outlet property="_speakerButton" destination="jJ0-14-dIs" id="fb7-QY-K2V"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="948.5" y="783.5"/>
+            <point key="canvasLocation" x="1051.5" y="782.5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="NH6-wk-vfP">
@@ -57,7 +182,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4nJ-76-1sq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="175" y="784"/>
+            <point key="canvasLocation" x="175" y="783.99999999999989"/>
         </scene>
     </scenes>
 </document>
