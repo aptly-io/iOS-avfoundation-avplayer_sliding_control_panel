@@ -77,13 +77,16 @@ static NSString *faBanIcon = @"\uf05e";
 
     [self setupImageLayer];
 
+#if 0
+    // Switching dynamically (with a notification) does not work;
+    // only when the second display is found at the startup
     NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
 
     [center addObserver:self selector:@selector(handleScreenDidConnectNotification:)
                    name:UIScreenDidConnectNotification object:nil];
     [center addObserver:self selector:@selector(handleScreenDidDisconnectNotification:)
                    name:UIScreenDidDisconnectNotification object:nil];
-
+#endif
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -345,23 +348,31 @@ static NSString *faBanIcon = @"\uf05e";
     // allow for airplay (the default)
     [_player setAllowsExternalPlayback:YES];
     [_player setExternalPlaybackVideoGravity: AVLayerVideoGravityResizeAspect];
+#if 1
+    // Continues the Airplay mirroring; does not switch over to Airplay Video
+    [_player setUsesExternalPlaybackWhileExternalScreenIsActive:NO];
+#else
+    // Will trigger Airplay Video; it stops Airplay mirroring
     [_player setUsesExternalPlaybackWhileExternalScreenIsActive:YES];
+#endif
 }
 
 - (void)setupImageLayer
 {
-    UIImage* image = [UIImage imageNamed:@"content.bundle/franchan.png"];
+    if (_player) {
+        UIImage* image = [UIImage imageNamed:@"content.bundle/franchan.png"];
 
-    CALayer *imageLayer = [CALayer layer];
-    imageLayer.contents = (id) image.CGImage;
-    CGSize imageSize = image.size;
-    imageLayer.bounds = CGRectMake(0.0f, 0.0f, imageSize.width/4, imageSize.height/4);
-    imageLayer.position = CGPointMake(460.0f, 460.0f);
+        CALayer *imageLayer = [CALayer layer];
+        imageLayer.contents = (id) image.CGImage;
+        CGSize imageSize = image.size;
+        imageLayer.bounds = CGRectMake(0.0f, 0.0f, imageSize.width/4, imageSize.height/4);
+        imageLayer.position = CGPointMake(460.0f, 460.0f);
 
-    AVPlayerLayer *playerLayer = (AVPlayerLayer *)_playerView.layer;
-    [playerLayer addSublayer:imageLayer];
+        AVPlayerLayer *playerLayer = (AVPlayerLayer *)_playerView.layer;
+        [playerLayer addSublayer:imageLayer];
 
-    // ? Put the image directly on the AVPlayerLayer?
+        // ? Put the image directly on the AVPlayerLayer?
+    }
 }
 
 /// Install a periodic timer that updates the seek bar
