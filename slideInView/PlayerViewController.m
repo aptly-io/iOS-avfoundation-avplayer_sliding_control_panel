@@ -59,6 +59,8 @@ static NSString *faBanIcon = @"\uf05e";
     IBOutlet UIButton *_skipForwardButton;
     IBOutlet UISlider *_slider;
     BOOL _sliding;                ///< flags the slider's thumb is dragged
+
+    UIWindow *_secondWindow;
 }
 
 /// deallocate observers registered with the NSNotificationCenter
@@ -68,7 +70,18 @@ static NSString *faBanIcon = @"\uf05e";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
+    [self checkSecondScreen];
+
     [self setupPlayer];
+
+    NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
+
+    [center addObserver:self selector:@selector(handleScreenDidConnectNotification:)
+                   name:UIScreenDidConnectNotification object:nil];
+    [center addObserver:self selector:@selector(handleScreenDidDisconnectNotification:)
+                   name:UIScreenDidDisconnectNotification object:nil];
+
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -187,6 +200,24 @@ static NSString *faBanIcon = @"\uf05e";
         [self showControlPanel];
     } else {
         [self hideControlPanel];
+    }
+}
+
+#pragma mark Notifications
+
+- (void)handleScreenDidConnectNotification:(NSNotification*)aNotification
+{
+    if (!_secondWindow) {
+        UIScreen *screen = [aNotification object];
+        [self handleSecondScreen:screen];
+    }
+}
+
+- (void)handleScreenDidDisconnectNotification:(NSNotification*)aNotification
+{
+    if (_secondWindow) {
+        _secondWindow.hidden = YES;
+        _secondWindow = nil;
     }
 }
 
@@ -334,5 +365,26 @@ static NSString *faBanIcon = @"\uf05e";
                                                           queue:dispatch_get_main_queue()
                                                      usingBlock:block];
 }
+
+-(void)checkSecondScreen
+{
+    if ([[UIScreen screens] count] == 2) {
+        UIScreen* screen = [[UIScreen screens] lastObject];
+        [self handleSecondScreen:screen];
+    }
+}
+
+- (void)handleSecondScreen:(UIScreen*)screen
+{
+    if (nil != screen) {
+        CGRect screenBounds = screen.bounds;
+
+        _secondWindow = [[UIWindow alloc] initWithFrame:screenBounds];
+        _secondWindow.screen = screen;
+        _secondWindow.rootViewController = self;
+        _secondWindow.hidden = NO;
+    }
+}
+
 
 @end
