@@ -325,8 +325,10 @@ static NSString *faBanIcon = @"\uf05e";
 
 - (void) setupPlayer
 {
-    NSURL *url = [NSURL fileURLWithPath:FILE_URL];
-    AVAsset *asset = [AVAsset assetWithURL:url];
+    NSURL *url = [[NSBundle mainBundle] URLForResource:@"content.bundle/hubblecast" withExtension:@"m4v"];
+    AVURLAsset *asset = [AVURLAsset URLAssetWithURL:url options:nil];
+    NSLog(@"filename: %@", asset.URL.lastPathComponent);
+
     AVPlayerItem *playerItem = [AVPlayerItem playerItemWithAsset:asset];
     [playerItem addObserver:self forKeyPath:@"status" options:0 context:&playerItemContext];
     _player = [AVPlayer playerWithPlayerItem:playerItem];
