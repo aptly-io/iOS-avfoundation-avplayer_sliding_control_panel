@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E702CAA51DD86AFD00209329 /* content.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E702CAA41DD86AFD00209329 /* content.bundle */; };
 		E7A4027F1D55B6E80087367A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E7A4027E1D55B6E80087367A /* main.m */; };
 		E7A402821D55B6E80087367A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E7A402811D55B6E80087367A /* AppDelegate.m */; };
 		E7A402851D55B6E80087367A /* PlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7A402841D55B6E80087367A /* PlayerViewController.m */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E702CAA41DD86AFD00209329 /* content.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = content.bundle; sourceTree = SOURCE_ROOT; };
 		E7A4027A1D55B6E80087367A /* slideInView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = slideInView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7A4027E1D55B6E80087367A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		E7A402801D55B6E80087367A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -63,6 +65,7 @@
 		E7A4027C1D55B6E80087367A /* slideInView */ = {
 			isa = PBXGroup;
 			children = (
+				E702CAA41DD86AFD00209329 /* content.bundle */,
 				E7A402971D5690980087367A /* Font */,
 				E7A402801D55B6E80087367A /* AppDelegate.h */,
 				E7A402811D55B6E80087367A /* AppDelegate.m */,
@@ -153,6 +156,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E7A4028D1D55B6E80087367A /* LaunchScreen.storyboard in Resources */,
+				E702CAA51DD86AFD00209329 /* content.bundle in Resources */,
 				E7A4028A1D55B6E80087367A /* Assets.xcassets in Resources */,
 				E7A402991D5693F00087367A /* FontAwesome.otf in Resources */,
 				E7A402881D55B6E80087367A /* Main.storyboard in Resources */,
