@@ -75,6 +75,8 @@ static NSString *faBanIcon = @"\uf05e";
 
     [self setupPlayer];
 
+    [self setupImageLayer];
+
     NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
 
     [center addObserver:self selector:@selector(handleScreenDidConnectNotification:)
@@ -344,6 +346,22 @@ static NSString *faBanIcon = @"\uf05e";
     [_player setAllowsExternalPlayback:YES];
     [_player setExternalPlaybackVideoGravity: AVLayerVideoGravityResizeAspect];
     [_player setUsesExternalPlaybackWhileExternalScreenIsActive:YES];
+}
+
+- (void)setupImageLayer
+{
+    UIImage* image = [UIImage imageNamed:@"content.bundle/franchan.png"];
+
+    CALayer *imageLayer = [CALayer layer];
+    imageLayer.contents = (id) image.CGImage;
+    CGSize imageSize = image.size;
+    imageLayer.bounds = CGRectMake(0.0f, 0.0f, imageSize.width/4, imageSize.height/4);
+    imageLayer.position = CGPointMake(460.0f, 460.0f);
+
+    AVPlayerLayer *playerLayer = (AVPlayerLayer *)_playerView.layer;
+    [playerLayer addSublayer:imageLayer];
+
+    // ? Put the image directly on the AVPlayerLayer?
 }
 
 /// Install a periodic timer that updates the seek bar
