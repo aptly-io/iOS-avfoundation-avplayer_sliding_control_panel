@@ -98,9 +98,9 @@ static NSString *faBanIcon = @"\uf05e";
     
     // configure gradient values
     _controlPanelView.layer.colors = @[
-                                       (__bridge id)[UIColor colorWithRed:0.0 green:0.0 blue:0.5 alpha:1.0].CGColor,
-                                       (__bridge id)[UIColor colorWithRed:0.0 green:0.0 blue:0.2 alpha:0.3].CGColor
-                                       ];
+        (__bridge id)[UIColor colorWithRed:0.0 green:0.0 blue:0.5 alpha:1.0].CGColor,
+        (__bridge id)[UIColor colorWithRed:0.0 green:0.0 blue:0.2 alpha:0.3].CGColor
+    ];
     
     _sliding = NO;
     
